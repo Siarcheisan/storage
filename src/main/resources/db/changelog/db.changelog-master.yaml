@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: delivery
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/deliveryTableCreate.sql
+  - changeSet:
+      id: product
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/productTableCreate.sql
+  - changeSet:
+      id: receiver
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/receiverTableCreate.sql
+  - changeSet:
+      id: supplier
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/supplierTableCreate.sql
+  - changeSet:
+      id: order
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/orderTableCreate.sql
+  - changeSet:
+      id: supplier_order
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/supplierOrderTableCreate.sql
+  - changeSet:
+      id: product_order
+      author: Sergey
+      changes:
+        - sqlFile:
+            path: db/changelog/productOrderTableCreate.sql
+
