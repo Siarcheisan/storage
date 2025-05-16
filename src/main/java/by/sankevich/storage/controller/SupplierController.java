@@ -5,6 +5,8 @@ import by.sankevich.storage.entity.Supplier;
 import by.sankevich.storage.repository.SupplierRepository;
 import by.sankevich.storage.service.SupplierService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,24 +18,30 @@ public class SupplierController {
     private final SupplierService supplierService;
 
     @PostMapping
-    public SupplierDto save(@RequestBody SupplierDto supplier) {
-        return supplierService.save(supplier);
+    public ResponseEntity <SupplierDto> save(@RequestBody SupplierDto supplier) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(supplierService.save(supplier));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity <Void> delete(@PathVariable Long id) {
         supplierService.delete(id);
-
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
     }
 
 
     @GetMapping("/{id}")
-    public SupplierDto get(@PathVariable Long id) {
-        return supplierService.get(id);
+    public ResponseEntity <SupplierDto> get(@PathVariable Long id) {
+        return ResponseEntity
+                .ok(supplierService.get(id));
     }
 
     @GetMapping
-    public List<SupplierDto> getAllSuppliers() {
-        return supplierService.getAllSuppliers();
+    public ResponseEntity <List<SupplierDto>> getAllSuppliers() {
+        return ResponseEntity
+                .ok(supplierService.getAllSuppliers());
     }
 }

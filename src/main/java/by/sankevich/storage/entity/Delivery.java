@@ -12,13 +12,19 @@ import java.util.List;
 @Entity
 public class Delivery {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long deliveryId;
+
+
     @OneToMany (mappedBy = "delivery")
-    private List <Order> order;
-    private Date dateOfDelivery;
+    private List <Order> orderList;
+
+    @Column (name = "date_of_delivery")
+    private Date date;
+
+    @Column (name = "delivery_type")
     private String deliveryType;
+
+    @Column (name = "delivery_cost")
     private Float deliveryCost;
-
-
 }
