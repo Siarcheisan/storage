@@ -10,4 +10,6 @@ public interface SupplierService {
     void delete (Long id);
     SupplierDto get (Long id);
     List <SupplierDto> getAllSuppliers ();
+
+    SupplierDto supplierUpdating(SupplierDto changedSupplier);
 }

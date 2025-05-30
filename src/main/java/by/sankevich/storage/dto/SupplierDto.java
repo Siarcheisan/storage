@@ -1,5 +1,6 @@
 package by.sankevich.storage.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

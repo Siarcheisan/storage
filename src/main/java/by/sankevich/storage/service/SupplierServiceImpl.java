@@ -61,4 +61,11 @@ public class SupplierServiceImpl implements SupplierService {
         return supplierDtos;
     }
 
+    @Override
+    public SupplierDto supplierUpdating(SupplierDto changedSupplier) {
+        Supplier updatedSupplier = supplierMapper.toEntity(changedSupplier);
+        Supplier savedUpdatedSupplier = supplierRepository.save(updatedSupplier);
+        return supplierMapper.toDto(savedUpdatedSupplier);
+    }
+
 }

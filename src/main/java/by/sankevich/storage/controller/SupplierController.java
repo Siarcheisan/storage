@@ -18,14 +18,14 @@ public class SupplierController {
     private final SupplierService supplierService;
 
     @PostMapping
-    public ResponseEntity <SupplierDto> save(@RequestBody SupplierDto supplier) {
+    public ResponseEntity<SupplierDto> save(@RequestBody SupplierDto supplier) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(supplierService.save(supplier));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity <Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         supplierService.delete(id);
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
@@ -34,14 +34,20 @@ public class SupplierController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity <SupplierDto> get(@PathVariable Long id) {
+    public ResponseEntity<SupplierDto> get(@PathVariable Long id) {
         return ResponseEntity
                 .ok(supplierService.get(id));
     }
 
     @GetMapping
-    public ResponseEntity <List<SupplierDto>> getAllSuppliers() {
+    public ResponseEntity<List<SupplierDto>> getAllSuppliers() {
         return ResponseEntity
                 .ok(supplierService.getAllSuppliers());
+    }
+
+    @PatchMapping
+    public ResponseEntity<SupplierDto> updatedSupplier(@RequestBody SupplierDto changedSupplier) {
+        return ResponseEntity
+                .ok(supplierService.supplierUpdating(changedSupplier));
     }
 }
