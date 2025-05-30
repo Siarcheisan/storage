@@ -15,7 +15,7 @@ public class Receiver {
     private Long receiverId;
 
     @OneToMany (mappedBy = "receiver" )
-    private List <Order> order;
+    private List <Order> orderList;
 
     @Column (name = "company_name")
     private String companyName;

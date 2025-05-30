@@ -18,6 +18,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDto save(OrderDto orderDto) {
         Order order = orderMapper.toEntity(orderDto);
+        order.setAmountOfGoods((long) order.getProductList().size());
         Order savedFromDB = orderRepository.save(order);
         return orderMapper.toDto(savedFromDB);
     }
