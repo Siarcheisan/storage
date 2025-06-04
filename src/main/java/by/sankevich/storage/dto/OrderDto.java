@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OrderDto {
     private Long orderId;
-    private List<SupplierDto> supplier;
+    private List<SupplierDto> supplierList;
 
     private ReceiverDto receiver;
 

@@ -1,7 +1,5 @@
 package by.sankevich.storage.dto;
 
-import by.sankevich.storage.entity.Order;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 

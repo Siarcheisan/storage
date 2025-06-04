@@ -11,10 +11,15 @@ import java.util.List;
 @Getter
 public class Supplier {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long supplierId;
-    @ManyToMany
-    private List<Order> orderList;
-    private String companyName;
 
+    @ManyToMany
+    @JoinTable (name = "supplier_order",
+    joinColumns = @JoinColumn (name ="supplier_id",referencedColumnName = "supplierId" ),
+    inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "orderId"))
+    private List<Order> orderList;
+
+    @Column (name = "company_name")
+    private String companyName;
 }

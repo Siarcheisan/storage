@@ -27,9 +27,10 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryResponseDto save(DeliveryRequestDto deliveryRequestDto) {
         Delivery deliveryToSave = deliveryMapper.toEntity(deliveryRequestDto);
+        Date date = new Date();
+        deliveryToSave.setDate(date);
         Delivery savedInDbProduct = deliveryRepository.save(deliveryToSave);
         return deliveryMapper.toDto(savedInDbProduct);
-
     }
 
     /**

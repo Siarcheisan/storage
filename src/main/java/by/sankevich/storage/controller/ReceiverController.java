@@ -6,6 +6,9 @@ import by.sankevich.storage.repository.ReceiverRepository;
 import by.sankevich.storage.service.ReceiverService;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,24 +20,30 @@ public class ReceiverController {
     private final ReceiverService receiverService;
 
     @PostMapping
-    public ReceiverDto save(@RequestBody ReceiverDto receiver) {
-        return receiverService.save(receiver);
-
+    public ResponseEntity <ReceiverDto> save(@RequestBody ReceiverDto receiver) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(receiverService.save(receiver));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity <Void> delete(@PathVariable Long id) {
         receiverService.delete(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
     }
 
 
     @GetMapping("/{id}")
-    public ReceiverDto get(@PathVariable Long id) {
-        return receiverService.get(id);
+    public ResponseEntity <ReceiverDto> get(@PathVariable Long id) {
+        return ResponseEntity
+                .ok(receiverService.get(id));
     }
 
     @GetMapping
-    public List<ReceiverDto> getAllReceivers() {
-        return receiverService.getAllReceivers();
+    public ResponseEntity <List<ReceiverDto>> getAllReceivers() {
+        return ResponseEntity
+                .ok(receiverService.getAllReceivers());
     }
 }
